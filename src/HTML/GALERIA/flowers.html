@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flowers</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <script src="../../SCRIPTS/scripts.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
+    <script src="/src/SCRIPTS/sharp.js" type="module"></script>
+
+</head>
+
+<body>
+    <!-- NAVEGACIÓ -->
+
+    <nav class="bg-orange-200 ">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="../../index.html" class="flex items-center space-x-2 ">
+                <img src="../../IMAGES/logo_photo_marc.svg" class="w-30 h-20">
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  white:bg-gray-800 md:white:bg-gray-900 white:border-gray-700">
+                    <li>
+                        <a href="../home.html" aria-current="page"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Home</a>
+                    </li>
+                    <li>
+                        <a href="../blog.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Blog</a>
+                    </li>
+                    <li>
+                        <a href="../galeria.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="../sobremi.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">About
+                            Me</a>
+                    </li>
+                    <li>
+                        <a href="../contacte.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Contact</a>
+                    </li>
+                    <li>
+                        <a href="../register.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Register</a>
+                    </li>
+                    <li>
+                        <a href="../login.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- NAVEGACIÓ -->
+    <div class=" flex flex-wrap items-center justify-between mx-auto p-4">
+        <div class="flex items-center space-x-2">
+            <a href="../home.html" class="font-mono text-amber-700 hover:text-amber-900">Home</a>
+            <a>/</a>
+            <a href="../galeria.html" class="font-mono text-amber-700 hover:text-amber-900">Blog</a>
+            <a>/</a>
+            <a href="flowers.html" class="font-mono text-amber-500 hover:text-amber-700">Flowers</a>
+        </div>
+    </div>
+    <div class="container mx-auto my-8 flex flex-wrap justify-center">
+        <a href="../../IMAGES/flor_vall_nuria.webp" data-lightbox="gallery" data-title="Animals">
+            <div
+                class="blog-card bg-white shadow-lg m-4 p-6 max-w-sm cursor-pointer transition-transform transform hover:scale-105">
+                <h2 class="font-mono text-xl font-bold mb-2">FLOWER VALL DE NÚRIA</h2>
+                <img src="../../IMAGES/flor_vall_nuria.webp" alt="Animals" class="my-4">
+                <figcaption class="font-mono text-center text-gray-500">Lilium pyrenaicum</figcaption>
+                
+            </div>
+        </a>
+        <a href="../../IMAGES/flor1.webp" data-lightbox="gallery" data-title="Animals">
+            <div
+                class="blog-card bg-white shadow-lg m-4 p-6 max-w-sm cursor-pointer transition-transform transform hover:scale-105">
+                <h2 class="font-mono text-xl font-bold mb-2">FLOWER 1</h2>
+                <img src="../../IMAGES/flor1.webp" alt="Animals" class="my-4">
+                <figcaption class="font-mono text-center text-gray-500">Flower1</figcaption>
+                
+            </div>
+        </a>
+        <a href="../../IMAGES/flor2.webp" data-lightbox="gallery" data-title="Animals">
+            <div
+                class="blog-card bg-white shadow-lg m-4 p-6 max-w-sm cursor-pointer transition-transform transform hover:scale-105">
+                <h2 class="font-mono text-xl font-bold mb-2">FLOWER 2</h2>
+                <img src="../../IMAGES/flor2.webp" alt="Animals" class="my-4">
+                <figcaption class="font-mono text-center text-gray-500">Flower2</figcaption>
+                
+            </div>
+        </a>
+        <a href="../../IMAGES/flor3.webp" data-lightbox="gallery" data-title="Animals">
+            <div
+                class="blog-card bg-white shadow-lg m-4 p-6 max-w-sm cursor-pointer transition-transform transform hover:scale-105">
+                <h2 class="font-mono text-xl font-bold mb-2">FLOWER 3</h2>
+                <img src="../../IMAGES/flor3.webp" alt="Animals" class="my-4">
+                <figcaption class="font-mono text-center text-gray-500">FLOWER 3</figcaption>
+                
+            </div>
+        </a>
+        <a href="../../IMAGES/flor4.webp" data-lightbox="gallery" data-title="Animals">
+            <div
+                class="blog-card bg-white shadow-lg m-4 p-6 max-w-sm cursor-pointer transition-transform transform hover:scale-105">
+                <h2 class="font-mono text-xl font-bold mb-2">FLOWER 4</h2>
+                <img src="../../IMAGES/flor4.webp" alt="Animals" class="my-4">
+                <figcaption class="font-mono text-center text-gray-500">Flower4</figcaption>
+                
+            </div>
+        </a>
+        <a href="../../IMAGES/flor5.webp" data-lightbox="gallery" data-title="Animals">
+            <div
+                class="blog-card bg-white shadow-lg m-4 p-6 max-w-sm cursor-pointer transition-transform transform hover:scale-105">
+                <h2 class="font-mono text-xl font-bold mb-2">FLOWER 5</h2>
+                <img src="../../IMAGES/flor5.webp" alt="Animals" class="my-4">
+                <figcaption class="font-mono text-center text-gray-500">Flower5</figcaption>
+                
+            </div>
+        </a>
+        <a href="../../IMAGES/flor6.webp" data-lightbox="gallery" data-title="Animals">
+            <div
+                class="blog-card bg-white shadow-lg m-4 p-6 max-w-sm cursor-pointer transition-transform transform hover:scale-105">
+                <h2 class="font-mono text-xl font-bold mb-2">FLOWER 6</h2>
+                <img src="../../IMAGES/flor6.webp" alt="Animals" class="my-4">
+                <figcaption class="font-mono text-center text-gray-500">Flower6</figcaption>
+                
+            </div>
+        </a>
+        <a href="../../IMAGES/flor7.webp" data-lightbox="gallery" data-title="Animals">
+            <div
+                class="blog-card bg-white shadow-lg m-4 p-6 max-w-sm cursor-pointer transition-transform transform hover:scale-105">
+                <h2 class="font-mono text-xl font-bold mb-2">FLOWER 7</h2>
+                <img src="../../IMAGES/flor7.webp" alt="Animals" class="my-4">
+                <figcaption class="font-mono text-center text-gray-500">Flower7</figcaption>
+                
+            </div>
+        </a>
+        <a href="../../IMAGES/flor8.webp" data-lightbox="gallery" data-title="Animals">
+            <div
+                class="blog-card bg-white shadow-lg m-4 p-6 max-w-sm cursor-pointer transition-transform transform hover:scale-105">
+                <h2 class="font-mono text-xl font-bold mb-2">FLOWER 8</h2>
+                <img src="../../IMAGES/flor8.webp" alt="Animals" class="my-4">
+                <figcaption class="font-mono text-center text-gray-500">Flower8</figcaption>
+                
+            </div>
+        </a>
+        <a href="../../IMAGES/flor10.webp" data-lightbox="gallery" data-title="Animals">
+            <div
+                class="blog-card bg-white shadow-lg m-4 p-6 max-w-sm cursor-pointer transition-transform transform hover:scale-105">
+                <h2 class="font-mono text-xl font-bold mb-2">FLOWER 9</h2>
+                <img src="../../IMAGES/flor10.webp" alt="Animals" class="my-4">
+                <figcaption class="font-mono text-center text-gray-500">Flower9</figcaption>
+                
+            </div>
+        </a>
+        <a href="../../IMAGES/flor11.webp" data-lightbox="gallery" data-title="Animals">
+            <div
+                class="blog-card bg-white shadow-lg m-4 p-6 max-w-sm cursor-pointer transition-transform transform hover:scale-105">
+                <h2 class="font-mono text-xl font-bold mb-2">FLOWER 10</h2>
+                <img src="../../IMAGES/flor11.webp" alt="Animals" class="my-4">
+                <figcaption class="font-mono text-center text-gray-500">Flower11</figcaption>
+                
+            </div>
+        </a>
+        
+    </div>
+    <!-- FOOTER -->
+    <footer class="bg-orange-200 rounded-lg shadow">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <a href="../../index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <img src="../../IMAGES/logo_photo_marc.svg" class="w-30 h-20">
+                </a>
+                <button data-collapse-toggle="navbar-default-footer" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-default-footer" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default-footer">
+                <ul
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  white:bg-gray-800 md:white:bg-gray-900 white:border-gray-700">
+                    <li>
+                        <a href="../home.html" aria-current="page"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Home</a>
+                    </li>
+                    <li>
+                        <a href="../blog.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Blog</a>
+                    </li>
+                    <li>
+                        <a href="../galeria.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="../sobremi.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">About
+                            Me</a>
+                    </li>
+                    <li>
+                        <a href="../contacte.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Contact</a>
+                    </li>
+                    <li>
+                        <a href="../register.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Register</a>
+                    </li>
+                    <li>
+                        <a href="../login.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Login</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+            <hr class="my-6 border-gray-600 sm:mx-auto  lg:my-8" />
+            <ul class="flex flex-wrap justify-center items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">                <li>
+                <li>
+                    <a href="../politica.html" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="../condicions.html" class="hover:underline me-4 md:me-6">Terms and Conditions</a>
+                </li>
+                <li>
+                    <a href="../cookies.html" class="hover:underline me-4 md:me-6">Cookies</a>
+                </li>
+                <li>
+                    <a href="../contacte.html" class="hover:underline">Contacte</a>
+                </li>
+                <li>
+                    <a href="../register.html" class="hover:underline">Register</a>
+                </li>
+                <li>
+                    <a href="../login.html" class="hover:underline">Login</a>
+                </li>
+            </ul>
+            <span class="block text-sm text-gray-500 sm:text-center ">© 2024 <a href="../sobremi.html"
+                class="hover:underline">Marc Ramilo Garrido</a>. All rights reserved.</span>
+        </div>
+        <br>
+
+    </footer>
+    <!-- FOOTER -->
+</body>
+
+</html>

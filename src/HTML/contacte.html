@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../SCRIPTS/scripts.js"></script>
+    <script src="/src/SCRIPTS/sharp.js" type="module"></script>
+    <script srC="/src/SCRIPTS/validations.js"></script>
+</head>
+
+<body>
+    <!-- NAVEGACIÓ -->
+    <nav class="bg-orange-200 ">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="../index.html" class="flex items-center space-x-2 ">
+                <img src="../IMAGES/logo_photo_marc.svg" class="w-30 h-20">
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200   "
+                aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  white:bg-gray-800 md:white:bg-gray-900 white:border-gray-700">
+                    <li>
+                        <a href="home.html" aria-current="page"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0  md:hover:text-orange-500    ">Home</a>
+                    </li>
+                    <li>
+                        <a href="blog.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0  md:hover:text-orange-500    ">Blog</a>
+                    </li>
+                    <li>
+                        <a href="galeria.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0  md:hover:text-orange-500    ">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="sobremi.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0  md:hover:text-orange-500    ">About
+                            Me</a>
+                    </li>
+                    <li>
+                        <a href="contacte.html"
+                            class="block py-2 px-3 text-amber-700 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0  md:hover:text-orange-500    ">Contact</a>
+                    </li>
+                    <li>
+                        <a href="register.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Register</a>
+                    </li>
+                    <li>
+                        <a href="login.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Login</a>
+                    </li>
+                    <li>
+                        <a href="register.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Register</a>
+                    </li>
+                    <li>
+                        <a href="login.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- NAVEGACIÓ -->
+    <br>
+
+    <div class="container mx-auto my-8 p-8 bg-white shadow-md max-w-md rounded-md">
+        <h1 class="font-mono text-2xl font-bold mb-4">Contact</h1>
+
+        <form action="https://formspree.io/f/mjvdvybk" method="post" novalidate>
+            <div class="mb-4">
+                <label for="nombre" class="font-mono block text-sm font-semibold text-gray-600">Name</label>
+                <input type="text" id="nombre" name="nombre" class="font-mono w-full p-2 border border-gray-300 rounded">
+                <div class="error-msg"></div> <!-- Espai per al missatge d'error -->
+            </div>
+            
+            <div class="mb-4">
+                <label for="email" class="font-mono block text-sm font-semibold text-gray-600">Mail</label>
+                <input type="email" id="email" name="email" class="font-mono w-full p-2 border border-gray-300 rounded">
+                <div class="error-msg"></div> <!-- Espai per al missatge d'error -->
+            </div>
+            
+            <div class="mb-4">
+                <label for="messaje" class="font-mono block text-sm font-semibold text-gray-600">Message</label>
+                <textarea id="messaje" name="mensaje" rows="4" class="w-full p-2 border border-gray-300 rounded"></textarea>
+                <div class="error-msg"></div> <!-- Espai per al missatge d'error -->
+            </div>
+            
+
+            <button type="submit" class="font-mono bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Submit</button>
+        </form>
+    </div>
+    <!-- FOOTER -->
+    <!-- FOOTER -->
+    <footer class="bg-orange-200 rounded-lg shadow">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <a href="../index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <img src="../IMAGES/logo_photo_marc.svg" class="w-30 h-20">
+                </a>
+                <button data-collapse-toggle="navbar-default-footer" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-default-footer" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default-footer">
+                    <ul
+                        class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  white:bg-gray-800 md:white:bg-gray-900 white:border-gray-700">
+                        <li>
+                            <a href="home.html" aria-current="page"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Home</a>
+                        </li>
+                        <li>
+                            <a href="blog.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Blog</a>
+                        </li>
+                        <li>
+                            <a href="galeria.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Gallery</a>
+                        </li>
+                        <li>
+                            <a href="sobremi.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">About
+                                Me</a>
+                        </li>
+                        <li>
+                            <a href="contacte.html"
+                                class="block py-2 px-3 text-amber-700 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Contact</a>
+                        </li>
+                        <li>
+                            <a href="register.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Register</a>
+                        </li>
+                        <li>
+                            <a href="login.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-6 border-gray-600 sm:mx-auto  lg:my-8" />
+            <ul class="flex flex-wrap justify-center items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">                
+                <li>
+                    <a href="politica.html" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="condicions.html" class="hover:underline me-4 md:me-6">Termes & Condicions</a>
+                </li>
+                <li>
+                    <a href="cookies.html" class="hover:underline me-4 md:me-6">Cookies</a>
+                </li>
+                <li>
+                    <a href="contacte.html" class="hover:underline">Contacte</a>
+                </li>
+                <li>
+                    <a href="register.html" class="hover:underline">Register</a>
+                </li>
+                <li>
+                    <a href="login.html" class="hover:underline">Login</a>
+                </li>
+            </ul>
+            <span class="block text-sm text-gray-500 sm:text-center ">© 2024 <a href="./sobremi.html"
+                    class="hover:underline">Marc Ramilo Garrido</a>. All rights reserved.</span>
+        </div>
+        <br>
+    </footer>
+    <!-- FOOTER -->
+</body>
+
+</html>

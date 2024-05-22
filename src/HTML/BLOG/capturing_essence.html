@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capturing Esscence</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <script src="../../SCRIPTS/scripts.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@splidejs/splide@3.0.8/dist/css/splide.min.css">
+    <script src="https://unpkg.com/@splidejs/splide@3.0.8/dist/js/splide.min.js"></script>
+    <script src="../../SCRIPTS/slider.js"></script>
+
+</head>
+
+<body>
+    <!-- NAVEGACIÓ -->
+
+    <nav class="bg-orange-200 ">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="../../index.html" class="flex items-center space-x-2 ">
+                <img src="../../IMAGES/logo_photo_marc.svg" class="w-30 h-20">
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  white:bg-gray-800 md:white:bg-gray-900 white:border-gray-700">
+                    <li>
+                        <a href="../home.html" aria-current="page"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Home</a>
+                    </li>
+                    <li>
+                        <a href="../blog.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Blog</a>
+                    </li>
+                    <li>
+                        <a href="../galeria.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="../sobremi.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">About
+                            Me</a>
+                    </li>
+                    <li>
+                        <a href="../contacte.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Contact</a>
+                    </li>
+                    <li>
+                        <a href="../register.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Register</a>
+                    </li>
+                    <li>
+                        <a href="../login.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class=" flex flex-wrap items-center justify-between mx-auto p-4">
+        <div class="flex items-center space-x-2">
+            <a href="../home.html" class="font-mono text-amber-700 hover:text-amber-900">Home</a>
+            <a>/</a>
+            <a href="../blog.html" class="font-mono text-amber-700 hover:text-amber-900">Blog</a>
+            <a>/</a>
+            <a href="capturing_essence.html" class="font-mono text-amber-500 hover:text-amber-700">Capturing Essence</a>
+        </div>
+    </div>
+    <!-- NAVEGACIÓ -->
+    <div class="relative">
+        <!-- Specify different image sources for different screen sizes -->
+        <picture>
+            <!-- Small screens -->
+            <source srcset="../../IMAGES/animals_small.webp" media="(max-width: 640px)">
+            <!-- Medium screens -->
+            <source srcset="../../IMAGES/animals_medium.webp" media="(max-width: 1024px)">
+            <!-- Large screens -->
+            <source srcset="../../IMAGES/animals_large.webp">
+            <!-- Fallback for older browsers -->
+            <img src="../../IMAGES/animals.jpg" alt="Playa" class="w-full h-auto object-cover">
+        </picture>
+        <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <h1 class="font-mono text-white font-bold text-2xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center mb-4">
+                CAPTURING ESSENCE</h1>
+            <a href="#article">
+                <svg class="w-14 h-14 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path fill="#fff" d="M1 5l8 7 8-7H1z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+    
+    <div class="m-4" id="article">
+        <section class="font-mono text-gray-700 space-y-6 container mx-auto my-8 max-w-2xl">
+            <p class="font-mono mb-4">Nature photography is a captivating art that allows us to connect with the beauty of the
+                natural world. To truly capture the essence of nature with your camera, here are some tips to elevate
+                your skills and bring your photos to life.</p>
+
+            <h2 class="font-mono text-2xl font-bold mb-2">1. Embrace the Golden Hours</h2>
+            <p class="font-mono mb-4">Capture the magical moments during the golden hours, which occur shortly after sunrise and
+                before sunset. The soft, warm light during these times enhances the natural colors and adds a touch of
+                enchantment to your photographs.</p>
+
+            <h2 class="font-mono text-2xl font-bold mb-2">2. Master Your Camera Settings</h2>
+            <p class="font-mono mb-4">Understanding your camera settings is crucial. Experiment with aperture, shutter speed, and
+                ISO to achieve the desired effects. Use a wide aperture to create a beautiful bokeh effect, adjust
+                shutter speed for motion control, and find the right ISO for the lighting conditions.</p>
+
+            <h2 class="font-mono text-2xl font-bold mb-2">3. Focus on Composition</h2>
+            <p class="font-mono mb-4">Compose your shots thoughtfully. Experiment with the rule of thirds, leading lines, and
+                framing to add visual interest to your photographs. Pay attention to the natural patterns and textures
+                present in the environment.</p>
+
+            <h2 class="font-mono text-2xl font-bold mb-2">4. Get Closer to Nature</h2>
+            <p class="font-mono mb-4">Immerse yourself in the surroundings. Get close to your subjects to capture intricate
+                details. Whether it's the delicate petals of a flower or the feathers of a bird, close-up shots reveal
+                the beauty that might go unnoticed from a distance.</p>
+
+            <h2 class="font-mono text-2xl font-bold mb-2">5. Patience is Key</h2>
+            <p class="font-mono mb-4">Nature operates at its own pace. Be patient and observant. Wait for the right moments to
+                unfold, whether it's a bird in flight, a blooming flower, or a stunning sunset. Patience often rewards
+                with extraordinary shots.</p>
+        </section>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="bg-orange-200 rounded-lg shadow">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <a href="../../index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <img src="../../IMAGES/logo_photo_marc.svg" class="w-30 h-20">
+                </a>
+                <button data-collapse-toggle="navbar-default-footer" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-default-footer" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default-footer">
+                <ul
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  white:bg-gray-800 md:white:bg-gray-900 white:border-gray-700">
+                    <li>
+                        <a href="../home.html" aria-current="page"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Home</a>
+                    </li>
+                    <li>
+                        <a href="../blog.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Blog</a>
+                    </li>
+                    <li>
+                        <a href="../galeria.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="../sobremi.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">About
+                            Me</a>
+                    </li>
+                    <li>
+                        <a href="../contacte.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Contact</a>
+                    </li>
+                    <li>
+                        <a href="../register.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Register</a>
+                    </li>
+                    <li>
+                        <a href="../login.html"
+                            class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Login</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+            <hr class="my-6 border-gray-600 sm:mx-auto  lg:my-8" />
+            <ul class="flex flex-wrap justify-center items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">                <li>
+                <li>
+                    <a href="../politica.html" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="../condicions.html" class="hover:underline me-4 md:me-6">Terms and Conditions</a>
+                </li>
+                <li>
+                    <a href="../cookies.html" class="hover:underline me-4 md:me-6">Cookies</a>
+                </li>
+                <li>
+                    <a href="../contacte.html" class="hover:underline">Contacte</a>
+                </li>
+                <li>
+                    <a href="../register.html" class="hover:underline">Register</a>
+                </li>
+                <li>
+                    <a href="../login.html" class="hover:underline">Login</a>
+                </li>
+            </ul>
+            <span class="block text-sm text-gray-500 sm:text-center ">© 2024 <a href="../sobremi.html"
+                class="hover:underline">Marc Ramilo Garrido</a>. All rights reserved.</span>
+        </div>
+        <br>
+
+    </footer>
+    <!-- FOOTER -->
+</body>
+
+</html>
