@@ -1,6 +1,6 @@
 async function fetchFromApi(endpoint, options = {}) {
-  const url = `https://663b84c1fee6744a6ea1ef89.mockapi.io/api/prova/${endpoint}`;
-
+  // const url = `http://localhost:3001/${endpoint}`;
+  const url = `https://6644bf0bb8925626f88fc5ad.mockapi.io/api/v2/${endpoint}`;
   const defaultHeaders = {
     'Content-Type': 'application/json',
   };
@@ -12,15 +12,17 @@ async function fetchFromApi(endpoint, options = {}) {
     ...options, // spread the rest of the options
   };
 
-  if (options.body) settings.body = JSON.stringify(options.body);
-
+  if (options.body) {
+    console.log('Body:', options.body);
+    settings.body = JSON.stringify(options.body);
+  }
   const response = await fetch(url, settings);
-
+  console.log(response);
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
-  return response.json();
+  return response;
 }
 
 export default fetchFromApi;
