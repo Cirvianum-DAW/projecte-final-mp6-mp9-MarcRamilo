@@ -34,7 +34,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         } else {
             console.error("Invalid email or password");
             loginMessage.textContent = "Invalid email or password";
-            loginMessage.style.color = "red";
+            loginMessage.style.color = "#A30000";
         }
     } catch (error) {
         console.error("Error:", error);

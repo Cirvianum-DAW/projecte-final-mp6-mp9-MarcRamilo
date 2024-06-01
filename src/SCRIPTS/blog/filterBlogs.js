@@ -67,6 +67,7 @@ function cargarArticulos(orden) {
                     titleElement.textContent = article.title;
 
                     const fotoElement = document.createElement("img");
+                    fotoElement.alt = article.title;
                     fotoElement.src = article.foto_banner;
 
                     const resumElement = document.createElement("p");
