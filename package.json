@@ -1,11 +1,11 @@
 {
   "name": "tailwind-parcel-project",
   "version": "1.0.0",
-  "description": "Projecte que utilitza Tailwind CSS i Parcel",
+  "description": "Project that uses Tailwind CSS and Parcel",
   "scripts": {
-    "start": "parcel ./src/index.html --no-cache",
-    "build": "parcel build ./src/index.html --no-cache",
-    "dev": "parcel ./src/index.html --no-cache"
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html",
+    "dev": "parcel ./src/index.html"
   },
   "keywords": [
     "tailwind",
