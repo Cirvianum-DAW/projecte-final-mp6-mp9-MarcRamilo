@@ -427,7 +427,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("create-form-article").addEventListener("submit", async function (event) {
         try {
             event.preventDefault();
-            
+
             const submitButton = event.target.querySelector('button[type="submit"]');
             submitButton.disabled = true; // Deshabilitar el botón de envío
 
@@ -453,37 +453,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 BlogId: blogIdContent,
             };
 
-            try {
-                const response = await fetch("https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Article", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(dataCreate),
-                });
+            const response = await fetch("https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Article", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(dataCreate),
+            });
 
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-
-                const data = await response.json();
-
-                document.getElementById("success").innerText = "Article created successfully";
-                document.getElementById("success").style.display = "block";
-                document.getElementById("error").style.display = "none";
-                console.log("Success:", data);
-            } catch (error) {
-                document.getElementById("error").innerText = "Hubo un problema con la solicitud: " + error.message;
-                document.getElementById("error").style.display = "block";
-                submitButton.disabled = false; // Volver a habilitar el botón de envío
-                console.error("Hubo un problema con la solicitud:", error);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
             }
+
+            const data = await response.json();
+
+            document.getElementById("success").innerText = "Article created successfully";
+            document.getElementById("success").style.display = "block";
+            document.getElementById("error").style.display = "none";
+            console.log("Success:", data);
         } catch (error) {
-            document.getElementById("error").innerText = "Hubo un problema con la validación de los campos: " + error.message;
+            document.getElementById("error").innerText = "Hubo un problema con la solicitud: " + error.message;
             document.getElementById("error").style.display = "block";
+            console.error("Hubo un problema con la solicitud:", error);
+        } finally {
             const submitButton = event.target.querySelector('button[type="submit"]');
             submitButton.disabled = false; // Volver a habilitar el botón de envío
-            console.error("Hubo un problema con la validación de los campos:", error);
         }
     });
 });
