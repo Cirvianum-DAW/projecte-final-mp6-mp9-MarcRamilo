@@ -1,0 +1,16 @@
+[
+  {
+    "createdAt": "2024-05-14T22:34:49.060Z",
+    "title": "LANDSCAPES",
+    "description": "Photograpies of LANDSCAPES",
+    "image": "https://i.ibb.co/HFB7cYj/landscape-ec47cfd1.webp",
+    "id": "1"
+  },
+  {
+    "createdAt": "2024-05-14T22:51:12.605Z",
+    "title": "ANIMALS",
+    "description": "Photograpies of ANIMALS",
+    "image": "https://i.ibb.co/M2gPJD2/animals-73d15a55.webp",
+    "id": "2"
+  }
+]

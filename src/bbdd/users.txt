@@ -1,0 +1,18 @@
+[
+  {
+    "createdAt": "2024-05-22T01:40:56.355Z",
+    "name": "Admin",
+    "email": "marcramilogarrido04@gmail.com",
+    "password": "123456789",
+    "typeUser": "admin",
+    "id": "1"
+  },
+  {
+    "createdAt": "2024-05-22T15:55:25.575Z",
+    "name": "Marc Ramilo Garrido",
+    "email": "marcramilogarrido04@gmail.com",
+    "password": "Cirivanum2024?",
+    "typeUser": "registered",
+    "id": "2"
+  }
+]

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Admin</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="CSS/form-edit.css" />
+    <script src="https://cdn.tiny.cloud/1/m3qv65d7zzaxkge914mckaluf8twuv8il9v84cmlhkrr37ox/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <script src="../SCRIPTS/components/tiny-mce.js"></script>
+</head>
+
+<body>
+    <!-- NAVEGACIÓ -->
+
+    <nav class="bg-orange-200">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="../index.html" class="flex items-center space-x-2">
+                <img src="../IMAGES/logo_photo_marc.svg" class="w-30 h-20" />
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <nav>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                    <ul
+                        class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 white:bg-gray-800 md:white:bg-gray-900 white:border-gray-700">
+                        <li>
+                            <a href="home.html" aria-current="page"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Home</a>
+                        </li>
+                        <li>
+                            <a href="blog.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Blog</a>
+                        </li>
+                        <li>
+                            <a href="galeria.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Gallery</a>
+                        </li>
+                        <li>
+                            <a href="sobremi.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">About
+                                Me</a>
+                        </li>
+                        <li>
+                            <a href="contacte.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Contact</a>
+                        </li>
+                        <nav id="navLinks">
+                            <ul class="flex flex-row space-x-4">
+                                <li>
+                                    <a href="register.html"
+                                        class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Register</a>
+                                </li>
+                                <li>
+                                    <a href="login.html"
+                                        class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Login</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <li id="logoutContainer" style="display: none">
+                            <button id="logoutButton"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">
+                                Logout
+                            </button>
+                            <br />
+                            <a id="profile" href="../HTML/dashboard.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Profile</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-4" x-data="{ open: false }">
+        <div class="flex flex-col items-center justify-center">
+            <button @click="open = !open"
+                class="px-4 py-2 font-semibold text-left w-full bg-gray-200 text-gray-800 rounded-lg focus:outline-none focus:shadow-outline">
+                CRUD Article
+            </button>
+            <div x-show="open" class="w-full mt-4">
+                <div class="flex flex-col items-center justify-center">
+                    <div id="successMessage"></div>
+                    <table class="table-auto border-collapse w-full mt-4">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                    ID
+                                </th>
+                                <th
+                                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                    Create At
+                                </th>
+                                <th
+                                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                    Title
+                                </th>
+                                <th
+                                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                    Banner
+                                </th>
+                                <th
+                                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                    Resume
+                                </th>
+                                <th
+                                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                    Description
+                                </th>
+                                <th
+                                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                    BlogId
+                                </th>
+                                <th
+                                    class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="articleTable">
+                            <!-- here will be the user table -->
+                        </tbody>
+                    </table>
+
+                    <!-- Edit All Button -->
+                    <div class="flex justify-center items-center">
+                        <button id="edit-all-button-article"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+                            Edit a Article
+                        </button>
+                    </div>
+                    <div class="flex justify-center items-center">
+                        <button id="create-button-article"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+                            Create a Article
+                        </button>
+                    </div>
+                </div>
+                <div id="success" style="display: none"
+                    class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+                    role="alert"></div>
+                <div id="error" style="display: none"
+                    class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                </div>
+                <!-- Edit Form -->
+                <div class="flex flex-col justify-center items-center min-h-screen bg-gray-200 mt-4"
+                    style="display: none" id="edit-form-container-article">
+                    <h1 class="text-3xl font-bold text-gray-800 dark:text-black text-center">
+                        Editing a Article
+                    </h1>
+                    <form id="edit-form-article"
+                        class="w-full max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mx-auto my-auto">
+                        <select id="article-select" name="articleId"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
+                            <!-- Opciones se cargarán dinámicamente aquí -->
+                        </select>
+                        <input type="hidden" name="articleId" />
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+                            Title
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+                            type="text" name="title" placeholder="title" />
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="foto_banner">
+                            Foto Banner
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+                            type="text" name="foto_banner" placeholder="foto_banner_url" />
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="resum">
+                            Resum
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+                            type="text" name="resum" placeholder="Resum_Article" />
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="descripcio">
+                            Description
+                        </label>
+                        <textarea id="descripcio"></textarea>
+                        <!-- select for blog -->
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="blogId">
+                            Blog Id
+                        </label>
+                        <select id="blog-select"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
+                        <!-- Opciones se cargarán dinámicamente aquí -->
+                    </select>
+
+                        <button id="edit-button-article"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="submit">
+                            Update
+                        </button>
+                    </form>
+                </div>
+                <div class="flex flex-col justify-center items-center min-h-screen bg-gray-200 mt-4"
+                    style="display: none" id="create-form-container-article">
+                    <h1 class="text-3xl font-bold text-gray-800 dark:text-black text-center">
+                        Creating a Article
+                    </h1>
+                    <form id="create-form-article"
+                        class="w-full max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mx-auto my-auto">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="titleCreate">
+                            Title
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+                            type="text" name="titleCreate" placeholder="title" />
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="foto_bannerCreate">
+                            Foto Banner
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+                            type="text" name="foto_bannerCreate" placeholder="foto_banner_url" />
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="resumCreate">
+                            Resum
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+                            type="text" name="resumCreate" placeholder="Resum_Article" />
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="descripcioCreate">
+                            Description
+                        </label>
+                        <textarea id="descripcioCreate"></textarea>
+                        <!-- select for blog -->
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="blogId">
+                            Blog Id
+                        </label>
+                        <select id="blog-select2"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" name="blogIdCreate">
+                            <!-- Opciones se cargarán dinámicamente aquí -->
+                        </select>
+                        
+                        <button id="create-button-article"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="submit">
+                            Save
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-orange-200 rounded-lg shadow mt-96">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <a href="../index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <img src="../IMAGES/logo_photo_marc.svg" class="w-30 h-20" />
+                </a>
+                <button data-collapse-toggle="navbar-default-footer" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-default-footer" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default-footer">
+                    <ul
+                        class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 white:bg-gray-800 md:white:bg-gray-900 white:border-gray-700">
+                        <li>
+                            <a href="home.html" aria-current="page"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Home</a>
+                        </li>
+                        <li>
+                            <a href="blog.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Blog</a>
+                        </li>
+                        <li>
+                            <a href="galeria.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Gallery</a>
+                        </li>
+                        <li>
+                            <a href="sobremi.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">About
+                                Me</a>
+                        </li>
+                        <li>
+                            <a href="contacte.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-6 border-gray-600 sm:mx-auto lg:my-8" />
+            <ul class="flex flex-wrap justify-center items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">
+                <li>
+                    <a href="politica.html" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="condicions.html" class="hover:underline me-4 md:me-6">Termes & Condicions</a>
+                </li>
+                <li>
+                    <a href="cookies.html" class="hover:underline me-4 md:me-6">Cookies</a>
+                </li>
+                <li>
+                    <a href="contacte.html" class="hover:underline">Contacte</a>
+                </li>
+            </ul>
+            <span class="block text-sm text-gray-500 sm:text-center">© 2024
+                <a href="./sobremi.html" class="hover:underline">Marc Ramilo Garrido</a>. All rights reserved.</span>
+        </div>
+    </footer>
+    <!-- FOOTER -->
+</body>
+<!-- <a href="./admin/blog/edit.html" hidden></a> -->
+<script src="../SCRIPTS/auth/sessionCheck.js"></script>
+<script src="../SCRIPTS/validations/logout.js"></script>
+<script src="../SCRIPTS/scripts.js"></script>
+<script src="../SCRIPTS/article/index.js"></script>
+<script>
+    // Función para manejar las solicitudes al AI
+    const api_key = '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';
+
+    const ai_request = (request, respondWith) => {
+        const openAiOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${api_key}`
+            },
+            body: JSON.stringify({
+                model: 'gpt-3.5-turbo',
+                temperature: 0.7,
+                max_tokens: 800,
+                messages: [{
+                    role: 'user',
+                    content: request.prompt
+                }],
+            })
+        };
+        respondWith.string((signal) => window.fetch('https://api.openai.com/v1/chat/completions', {
+                signal,
+                ...openAiOptions
+            })
+            .then(async (response) => {
+                if (response) {
+                    const data = await response.json();
+                    if (data.error) {
+                        throw new Error(`${data.error.type}: ${data.error.message}`);
+                    } else if (response.ok) {
+                        // Extract the response content from the data returned by the API
+                        return data?.choices[0]?.message?.content?.trim();
+                    }
+                } else {
+                    throw new Error('Failed to communicate with the ChatGPT API');
+                }
+            })
+        );
+    };
+
+    // Inicializar TinyMCE
+    tinymce.init({
+        selector: "textarea#descripcioCreate",
+        plugins: "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
+        toolbar: "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | aidialog aishortcuts",
+        ai_request: ai_request, // Asigna la función ai_request como el manejador de las solicitudes al AI
+        tinycomments_mode: "embedded",
+        tinycomments_author: "Author name",
+        mergetags_list: [{
+                value: "First.Name",
+                title: "First Name"
+            },
+            {
+                value: "Email",
+                title: "Email"
+            },
+        ],
+    });
+</script>
+</html>

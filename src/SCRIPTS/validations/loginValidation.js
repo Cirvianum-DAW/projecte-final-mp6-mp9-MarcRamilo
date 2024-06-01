@@ -27,7 +27,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
             // Redirect based on user type
             if (user.typeUser === "admin") {
-                window.location.href = "admin.html";
+                window.location.href = "admins.html";
             } else {
                 window.location.href = "dashboard.html";
             }

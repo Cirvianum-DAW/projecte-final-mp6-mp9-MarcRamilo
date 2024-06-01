@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
       navLinks.style.display = "none";
       // Show Logout button
       logoutContainer.style.display = "block";
+
+      //
     }
   
     // Logout functionality
@@ -19,3 +21,22 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.reload(); // Reload the page to update the UI
     });
   });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const profileLink = document.getElementById("profile");
+
+    // Check if user is logged in
+    const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"));
+
+    if (loggedInUser) {
+      // Set the href of the profile link based on the user's type
+      if (loggedInUser.typeUser === "admin") {
+        profileLink.href = "admins.html";
+        // getInfo user login from api
+
+
+      } else {
+        profileLink.href = "dashboard.html";
+      }
+    }
+});

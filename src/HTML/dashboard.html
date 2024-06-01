@@ -2,21 +2,21 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <script defer src="/src/SCRIPTS/sharp.js" type="module"></script>
-    <script defer src="../auth/sessionCheck.js"></script>
-    <script defer src="../validations/logout.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../SCRIPTS/scripts.js"></script>
+
 </head>
 
-<body class="bg-gray-100 text-gray-800">
-    <!-- Navbar superior -->
-    <nav class="bg-orange-200 p-4">
-        <div class="max-w-screen-xl mx-auto flex items-center justify-between">
-            <a href="../index.html" class="flex items-center space-x-2">
-                <img src="../IMAGES/logo_photo_marc.svg" class="w-30 h-20" alt="Logo">
+<body>
+    <!-- NAVEGACIÓ -->
+
+    <nav class="bg-orange-200 ">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="../index.html" class="flex items-center space-x-2 ">
+                <img src="../IMAGES/logo_photo_marc.svg" class="w-30 h-20">
             </a>
             <button data-collapse-toggle="navbar-default" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -28,76 +28,9 @@
                         d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
             </button>
-            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700">
-                    <li>
-                        <a href="home.html" aria-current="page" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Home</a>
-                    </li>
-                    <li>
-                        <a href="blog.html" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Blog</a>
-                    </li>
-                    <li>
-                        <a href="galeria.html" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Gallery</a>
-                    </li>
-                    <li>
-                        <a href="sobremi.html" class="block py-2 px-3 text-amber-700 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">About Me</a>
-                    </li>
-                    <li>
-                        <a href="contacte.html" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Contact</a>
-                    </li>
-                    <li>
-                        <a href="register.html" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Register</a>
-                    </li>
-                    <li>
-                        <a href="login.html" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Login</a>
-                    </li>
-                    <li id="logoutContainer">
-                        <button id="logoutButton" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Logout</button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Dashboard Content -->
-    <div class="container mx-auto mt-10 p-4 bg-white rounded shadow">
-        <h2 class="text-2xl font-bold mb-4">User Dashboard</h2>
-        <table class="min-w-full bg-white">
-            <thead>
-                <tr>
-                    <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left">Field</th>
-                    <th class="py-2 px-4 bg-gray-200 text-gray-600 font-bold uppercase text-sm text-left">Value</th>
-                </tr>
-            </thead>
-            <tbody id="userTableBody">
-                <!-- User information will be populated here -->
-            </tbody>
-        </table>
-        <div class="mt-6">
-            <button id="deleteAccountButton" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Delete Account</button>
-            <button id="logoutButtonDashboard" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 ml-4">Logout</button>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-10">
-        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-            <div class="sm:flex sm:items-center sm:justify-between">
-                <a href="../index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                    <img src="../IMAGES/logo_photo_marc.svg" class="w-30 h-20" alt="Logo">
-                </a>
-                <button data-collapse-toggle="navbar-default-footer" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    aria-controls="navbar-default-footer" aria-expanded="false">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 1h15M1 7h15M1 13h15" />
-                    </svg>
-                </button>
-                <div class="hidden w-full md:block md:w-auto" id="navbar-default-footer">
-                    <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700">
+            <nav>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                    <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 white:bg-gray-800 md:white:bg-gray-900 white:border-gray-700">
                         <li>
                             <a href="home.html" aria-current="page" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Home</a>
                         </li>
@@ -113,17 +46,128 @@
                         <li>
                             <a href="contacte.html" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Contact</a>
                         </li>
-                        <li>
-                            <a href="register.html" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Register</a>
-                        </li>
-                        <li>
-                            <a href="login.html" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Login</a>
-                        </li>
-                        <li id="logoutContainerFooter">
-                            <button id="logoutButtonFooter" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Logout</button>
+                        <nav id="navLinks">
+                            <ul class="flex flex-row space-x-4">
+                                <li>
+                                    <a href="register.html" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Register</a>
+                                </li>
+                                <li>
+                                    <a href="login.html" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Login</a>
+                                </li>
+                            </ul>
+                        </nav>
+                       
+                        <li id="logoutContainer" style="display: none;">
+                            <button id="logoutButton" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Logout</button>
+                            <br>
+                            <a id="profile" href="../HTML/dashboard.html" class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Profile</a>
                         </li>
                     </ul>
                 </div>
-            </div>
+            </nav>
         </div>
+    </nav>
+    <!-- dashboard client showing info of the session user-->
+    <div class="container mx-auto p-4">
+        <div class="flex flex-col items-center justify-center">
+            <h1 class="text-3xl font-bold text-gray-800 dark:text-black">Dashboard</h1>
+            <p class="text-gray-600 dark:text-black">Welcome to your Photgraphy Marc</p>
+        </div>
+        
+    </div>
+    <div class="container mx-auto p-4">
+  
+        <div class="container mx-auto p-4 flex justify-center items-center">
+            <table id="userInfo" class="table-auto">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>User Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-gray-100">
+                        <td id="name" class="px-4 py-2 border text-center"></td>
+                        <td id="email" class="px-4 py-2 border text-center"></td>
+                        <td id="userType" class="px-4 py-2 border text-center"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </table>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-orange-200 rounded-lg shadow">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <a href="../index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <img src="../IMAGES/logo_photo_marc.svg" class="w-30 h-20">
+                </a>
+                <button data-collapse-toggle="navbar-default-footer" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-default-footer" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default-footer">
+                    <ul
+                        class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  white:bg-gray-800 md:white:bg-gray-900 white:border-gray-700">
+                        <li>
+                            <a href="home.html" aria-current="page"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Home</a>
+                        </li>
+                        <li>
+                            <a href="blog.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Blog</a>
+                        </li>
+                        <li>
+                            <a href="galeria.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Gallery</a>
+                        </li>
+                        <li>
+                            <a href="sobremi.html"
+                                class="block py-2 px-3 text-amber-700 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">About
+                                Me</a>
+                        </li>
+                        <li>
+                            <a href="contacte.html"
+                                class="block py-2 px-3 text-amber-500 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500  md:p-0 dark:hover:text-dark md:hover:text-orange-500  dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Contact</a>
+                        </li>
+                    
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-6 border-gray-600 sm:mx-auto  lg:my-8" />
+            <ul class="flex flex-wrap justify-center items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">                
+                <li>
+                    <a href="politica.html" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="condicions.html" class="hover:underline me-4 md:me-6">Termes & Condicions</a>
+                </li>
+                <li>
+                    <a href="cookies.html" class="hover:underline me-4 md:me-6">Cookies</a>
+                </li>
+                <li>
+                    <a href="contacte.html" class="hover:underline">Contacte</a>
+                </li>
+               
+            </ul>
+            <span class="block text-sm text-gray-500 sm:text-center ">© 2024 <a href="./sobremi.html"
+                    class="hover:underline">Marc Ramilo Garrido</a>. All rights reserved.</span>
+        </div>
+        <br>
     </footer>
+    <!-- FOOTER -->
+</body>
+<script  type="module" src="../SCRIPTS/main.js"></script>
+  
+
+
+</html>
