@@ -1,6 +1,3 @@
-plugins: [
-  {
-    name: 'preset-default',
-  },
-  'cleanupIDs'
-]
+module.exports = {
+  plugins: [require("postcss-import"), require("tailwindcss")],
+};
