@@ -50,11 +50,6 @@ function createTable(data) {
     emailCell.textContent = item.email;
     row.appendChild(emailCell);
 
-    // Contraseña
-    const passwordCell = document.createElement("td");
-    passwordCell.textContent = item.password;
-    row.appendChild(passwordCell);
-
     // Tipo de usuario
     const typeUserCell = document.createElement("td");
     typeUserCell.textContent = item.typeUser;
@@ -139,12 +134,12 @@ document.addEventListener("DOMContentLoaded", function () {
         "edit-form-container-user"
       );
       editFormContainer.style.display = "block";
-      
+
       const rows = document.querySelectorAll("#userTable tr");
       rows.forEach((row) => {
         row.addEventListener("click", function () {
-          // const userData = JSON.parse(this.dataset.user); 
-          // console.log(userData);
+          const userData = JSON.parse(this.dataset.user);
+          console.log(userData);
           document.querySelector('input[name="userId"]').value = userData.id;
           document.querySelector('input[name="name"]').value = userData.name;
           document.querySelector('input[name="email"]').value = userData.email;
@@ -154,7 +149,6 @@ document.addEventListener("DOMContentLoaded", function () {
             userData.typeUser;
         });
       });
-      
     });
 });
 
@@ -196,7 +190,7 @@ async function fetchUsers() {
   }
 }
 async function getInfoUsers(userId) {
-  try {
+
     const response = await fetch(
       `https://6644bf0bb8925626f88fc5ad.mockapi.io/api/v2/Users/${userId}`
     );
@@ -206,48 +200,30 @@ async function getInfoUsers(userId) {
     }
 
     const data = await response.json();
-    console.log(data);
+    console.log("data", data);
 
     // Verificar que los elementos existan antes de establecer los valores
-    const userIdInput = document.querySelector('input[name="userId"]');
-    const nameInput = document.querySelector('input[name="name"]');
-    const emailInput = document.querySelector('input[name="email"]');
-    const passwordInput = document.querySelector('input[name="password"]');
-    const typeUserInput = document.querySelector('input[name="typeUser"]');
+    document.querySelector('input[name="userId"]').value = data.id;
+    document.querySelector('input[name="name"]').value = data.name;
+    document.querySelector('input[name="email"]').value = data.email;
+    document.querySelector('input[name="password"]').value = data.password;
+    document.querySelector('select[name="typeUser"]').value = data.typeUser;
 
-    if (
-      userIdInput &&
-      nameInput &&
-      emailInput &&
-      passwordInput &&
-      typeUserInput
-    ) {
-      // Llena los campos del formulario con los datos obtenidos
-      userIdInput.value = data.id;
-      nameInput.value = data.name;
-      emailInput.value = data.email;
-      passwordInput.value = data.password;
-      typeUserInput.value = data.typeUser;
-    } else {
-      console.log("One or more form input elements not found.");
-    }
-  } catch (error) {
-    console.log(
-      "There was a problem with the fetch operation: " + error.message
-    );
+    
+  
   }
-}
+
 //update the blog edit-form
 document
   .getElementById("edit-form-user")
   .addEventListener("submit", function (event) {
     // const createFormContainer = document.getElementById(
-    //   "create-form-container-user"
+    // "create-form-container-user"
     // );
     // createFormContainer.parentNode.removeChild(createFormContainer);
 
     // document.getElementById("create-form-container-user").style.display =
-    //   "none";
+    // "none";
     event.preventDefault();
 
     //display none to the create form
@@ -255,7 +231,7 @@ document
     const name = document.querySelector('input[name="name"]').value;
     const email = document.querySelector('input[name="email"]').value;
     const password = document.querySelector('input[name="password"]').value;
-    const image = document.querySelector('input[name="typeUser"]').value;
+    const image = document.querySelector('select[name="typeUser"]').value;
 
     const data = {
       id: userId, // Utiliza el ID del usuario

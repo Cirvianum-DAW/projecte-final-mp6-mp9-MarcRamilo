@@ -80,6 +80,28 @@
         </div>
     </nav>
     <!-- NAVEGACIÓ -->
+    <div class="container mx-auto p-4">
+  
+      <div class="container mx-auto p-4 flex justify-center items-center">
+          <table id="userInfo" class="table-auto">
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>User Type</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr class="bg-gray-100">
+                      <td id="name" class="px-4 py-2 border text-center"></td>
+                      <td id="email" class="px-4 py-2 border text-center"></td>
+                      <td id="userType" class="px-4 py-2 border text-center"></td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+      </table>
+  </div>
     <!-- buton to crud blog -->
     <div class="flex justify-center mt-10">
         <a href="../HTML/blogAdmin.html" class="bg-orange-200 hover:bg-orange-300 text-black font-bold py-2 px-4 rounded-lg">CRUD Blog</a>
@@ -150,7 +172,6 @@
 <!-- <a href="./admin/blog/edit.html" hidden></a> -->
 <script src="../SCRIPTS/auth/sessionCheck.js"></script>
 <script src="../SCRIPTS/validations/logout.js"></script>
-<script src="../SCRIPTS/blog/index.js"></script>
 <script src="../SCRIPTS/scripts.js"></script>
-<script src="../SCRIPTS/blog/index.js"></script>
+<script src="../SCRIPTS/user/dashboard.js"></script>
 </html>
