@@ -179,9 +179,12 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="typeUser">
                             Type of User
                         </label>
-                        <input
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
-                            type="text" name="typeUser" placeholder="TypeUser" />
+                        <select
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+                        name="typeUser" id="typeUser">
+                        <option value="registered">registered</option>
+                        <option value="admin">admin</option>
+                    </select>
                         <button id="edit-button-user"
                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="submit">

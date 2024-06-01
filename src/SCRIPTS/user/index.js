@@ -139,11 +139,12 @@ document.addEventListener("DOMContentLoaded", function () {
         "edit-form-container-user"
       );
       editFormContainer.style.display = "block";
-
+      
       const rows = document.querySelectorAll("#userTable tr");
       rows.forEach((row) => {
         row.addEventListener("click", function () {
-          const userData = JSON.parse(this.dataset.user); // Cambiar a "user"
+          // const userData = JSON.parse(this.dataset.user); 
+          // console.log(userData);
           document.querySelector('input[name="userId"]').value = userData.id;
           document.querySelector('input[name="name"]').value = userData.name;
           document.querySelector('input[name="email"]').value = userData.email;
@@ -153,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
             userData.typeUser;
         });
       });
+      
     });
 });
 

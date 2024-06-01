@@ -126,39 +126,6 @@ function getFormData(formId) {
   return data;
 }
 
-// Evento de envío del formulario de creación
-document
-  .getElementById("create-form-article")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
-    const formData = getFormData("create-form-article"); // Obtener los datos del formulario
-    // Aquí puedes enviar los datos al servidor o realizar otras acciones
-    console.log("Form data:", formData);
-
-    // Realiza la solicitud HTTP para actualizar el article
-    fetch(`https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Article`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        document.getElementById("success").innerHTML =
-          "Article created successfully";
-        //put display on
-        document.getElementById("success").style.display = "block";
-        // location.reload();
-      })
-      .catch((error) => {
-        // Maneja los errores de la solicitud
-        console.error("Hubo un problema con la solicitud:", error);
-      });
-  });
-
 // Function to delete a article post
 async function deleteArticle(blogId, articleId) {
   console.log(`Attempting to delete article with ID ${articleId}`);
@@ -348,9 +315,12 @@ async function getInfoarticle(articleId) {
     const data = await response.json();
     // Llena los campos del formulario con los datos obtenidos
     document.querySelector('input[name="title"]').value = data.title;
-    document.querySelector('input[name="content"]').value = data.description;
-    document.querySelector('input[name="date"]').value = data.image;
-    document.querySelector('input[name="image"]').value = data.article_id;
+    document.querySelector('input[name="foto_banner"]').value =
+      data.foto_banner;
+    document.querySelector('input[name="resum"]').value = data.resum;
+    //vaciar el editor
+    const descripcioEditor = tinymce.get("descripcioCreate");
+    descripcioEditor.setContent(data.descripcio);
   } catch (error) {
     console.log(
       "There was a problem with the fetch operation: " + error.message
@@ -360,31 +330,35 @@ async function getInfoarticle(articleId) {
 document
   .getElementById("edit-form-article")
   .addEventListener("submit", function (event) {
-    // Prevent the default form submission
+    // Evitar el envío predeterminado del formulario
     event.preventDefault();
 
-    // Collect form data
-    const articleId = document.querySelector('input[name="articleId"]').value;
+    // Recolectar los datos del formulario
+    const articleId = document.querySelector(
+      'select[name="article-select"]'
+    ).value;
     const title = document.querySelector('input[name="title"]').value;
     const foto_banner = document.querySelector(
       'input[name="foto_banner"]'
     ).value;
     const resum = document.querySelector('input[name="resum"]').value;
-    const descripcio = document.querySelector(
-      'textarea[name="descripcio"]'
-    ).value;
+    const descripcioContent = tinymce.get("descripcioCreate").getContent();
+    const blogId = document.getElementById("blog-select").value;
 
-    // Prepare data object
+    // Preparar el objeto de datos
     const data = {
       title: title,
       foto_banner: foto_banner,
       resum: resum,
-      descripcio: descripcio,
+      descripcio: descripcioContent,
+      BlogId: blogId,
     };
+    console.log(data);
+    console.log(articleId, blogId);
 
-    // Send update request
+    // Enviar la solicitud de actualización
     fetch(
-      `https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Article/${articleId}`,
+      `https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Blog/${blogId}/Article/${articleId}`,
       {
         method: "PUT",
         headers: {
@@ -397,12 +371,14 @@ document
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
+        // Mostrar mensaje de éxito solo si la solicitud fue exitosa
         document.getElementById("success").innerHTML =
           "Article updated successfully";
         document.getElementById("success").style.display = "block";
-        // Refresh the page or update UI as needed
+        // Actualizar la página o la interfaz de usuario según sea necesario
       })
       .catch((error) => {
+        // Manejar errores de solicitud
         console.error("There was a problem with the update request:", error);
       });
   });
@@ -423,63 +399,83 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 });
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("create-form-article").addEventListener("submit", async function (event) {
-        try {
-            event.preventDefault();
 
-            const submitButton = event.target.querySelector('button[type="submit"]');
-            submitButton.disabled = true; // Deshabilitar el botón de envío
+document
+  .getElementById("create-form-article")
+  .addEventListener("submit", async function (event) {
+    try {
+      event.preventDefault();
 
-            const titleContent = document.querySelector('input[name="titleCreate"]')?.value;
-            const contentContent = document.querySelector('input[name="foto_bannerCreate"]')?.value;
-            const resumContent = document.querySelector('input[name="resumCreate"]')?.value;
-            const descripcioContent = tinymce.get("descripcioCreate")?.getContent(); // Retrieve content from TinyMCE
-            const blogIdContent = document.querySelector('select[name="blogIdCreate"]')?.value;
+      const form = document.getElementById("create-form-article"); // Define the form variable
+      const submitButton = form.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
 
-            if (!titleContent || !contentContent || !resumContent || !descripcioContent || !blogIdContent) {
-                console.error("All fields are required");
-                document.getElementById("error").innerText = "All fields are required";
-                document.getElementById("error").style.display = "block";
-                submitButton.disabled = false; // Volver a habilitar el botón de envío
-                return;
-            }
+      const titleContent = form.querySelector(
+        'input[name="titleCreate"]'
+      ).value;
+      const contentContent = form.querySelector(
+        'input[name="foto_bannerCreate"]'
+      ).value;
+      const resumContent = form.querySelector(
+        'input[name="resumCreate"]'
+      ).value;
+      const descripcioContent = tinymce.get("descripcioCreate").getContent();
+      const blogIdContent = form.querySelector(
+        'select[name="blogIdCreate"]'
+      ).value;
 
-            const dataCreate = {
-                title: titleContent,
-                foto_banner: contentContent,
-                resum: resumContent,
-                descripcio: descripcioContent,
-                BlogId: blogIdContent,
-            };
+      if (
+        !titleContent ||
+        !contentContent ||
+        !resumContent ||
+        !descripcioContent ||
+        !blogIdContent
+      ) {
+        console.error("All fields are required");
+        document.getElementById("error").innerText = "All fields are required";
+        document.getElementById("error").style.display = "block";
+        submitButton.disabled = false;
+        return;
+      }
 
-            const response = await fetch("https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Article", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(dataCreate),
-            });
+      const dataCreate = {
+        title: titleContent,
+        foto_banner: contentContent,
+        resum: resumContent,
+        descripcio: descripcioContent,
+        BlogId: blogIdContent,
+      };
 
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-
-            const data = await response.json();
-
-            document.getElementById("success").innerText = "Article created successfully";
-            document.getElementById("success").style.display = "block";
-            document.getElementById("error").style.display = "none";
-            console.log("Success:", data);
-        } catch (error) {
-            document.getElementById("error").innerText = "Hubo un problema con la solicitud: " + error.message;
-            document.getElementById("error").style.display = "block";
-            console.error("Hubo un problema con la solicitud:", error);
-        } finally {
-            const submitButton = event.target.querySelector('button[type="submit"]');
-            submitButton.disabled = false; // Volver a habilitar el botón de envío
+      const response = await fetch(
+        "https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Article",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataCreate),
         }
-    });
-});
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+
+      document.getElementById("success").innerText =
+        "Article created successfully";
+      document.getElementById("success").style.display = "block";
+      document.getElementById("error").style.display = "none";
+      console.log("Success:", data);
+    } catch (error) {
+      document.getElementById("error").innerText =
+        "There was a problem with the request: " + error.message;
+      document.getElementById("error").style.display = "block";
+      console.error("There was a problem with the request:", error);
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
 
 // fetcharticles();
