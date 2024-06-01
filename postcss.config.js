@@ -1,7 +1,3 @@
 module.exports = {
-  plugins: [
-    require("postcss-import"),
-    require("tailwindcss"),
-    require("autoprefixer"), // Add autoprefixer for vendor prefixing
-  ],
+  plugins: [require("postcss-import"), require("tailwindcss")],
 };

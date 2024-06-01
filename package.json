@@ -1,11 +1,10 @@
 {
   "name": "tailwind-parcel-project",
   "version": "1.0.0",
-  "description": "Project that uses Tailwind CSS and Parcel",
+  "description": "Projecte que utilitza Tailwind CSS i Parcel",
   "scripts": {
-    "start": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html",
-    "dev": "parcel ./src/index.html"
+    "dev": "parcel src/index.html && parcel src/index.html ",
+    "build": "parcel build src/index.html"
   },
   "keywords": [
     "tailwind",
@@ -17,21 +16,23 @@
   "author": "Marc Ramilo Garrido",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-postcss": "^2.12.0",
+    "@parcel/transformer-postcss": "^2.10.0",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
-    "cssnano": "^6.1.2",
     "events": "^3.3.0",
     "imagemin": "^9.0.0",
     "imagemin-webp": "^8.0.0",
-    "parcel": "^2.12.0",
+    "parcel": "^2.10.3",
     "path-browserify": "^1.0.1",
-    "postcss": "^8.4.38",
+    "postcss": "^8.4.31",
     "postcss-import": "^15.1.0",
-    "tailwindcss": "^3.4.3"
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "tailwindcss": "^3.4.3",
+    "util": "^0.12.5",
+    "vm-browserify": "^1.1.2"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.19",
-    "uuid": "^9.0.1"
+    "sharp": "^0.33.3"
   }
 }
