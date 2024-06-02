@@ -37,7 +37,7 @@
                     <ul
                         class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 white:bg-gray-800 md:white:bg-gray-900 white:border-gray-700">
                         <li>
-                            <a href="home.html" 
+                            <a href="home.html"
                                 class="block py-2 px-3 text-amber-800 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Home</a>
                         </li>
                         <li>
@@ -84,12 +84,11 @@
             </nav>
         </div>
     </nav>
-    <div class=" flex flex-wrap items-center justify-between mx-auto p-4">
+    <div class="flex flex-wrap items-center justify-between mx-auto p-4">
         <div class="flex items-center space-x-2">
             <a href="home.html" class="font-mono text-2xl text-amber-700 hover:text-amber-900">Home</a>
             <a>/</a>
             <a href="articleAdmin.html" class="font-mono text-2xl text-amber-800 hover:text-amber-900">Article Admin</a>
-           
         </div>
     </div>
     <div class="container mx-auto p-4" x-data="{ open: false }">
@@ -207,7 +206,7 @@
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
                             <!-- Opciones se cargarán dinámicamente aquí -->
                         </select>
-                        
+
                         <button id="edit-button-article"
                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="submit">
@@ -285,7 +284,7 @@
                     <ul
                         class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 white:bg-gray-800 md:white:bg-gray-900 white:border-gray-700">
                         <li>
-                            <a href="home.html" 
+                            <a href="home.html"
                                 class="block py-2 px-3 text-amber-800 rounded hover:bg-black md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:text-dark md:hover:text-orange-500 dark:hover:bg-gray-700 dark:hover:text-dark md:dark:hover:bg-transparent">Home</a>
                         </li>
                         <li>
@@ -335,66 +334,128 @@
 <script src="../SCRIPTS/scripts.js"></script>
 <script src="../SCRIPTS/article/index.js"></script>
 <script>
-    // Función para manejar las solicitudes al AI
     const api_key = "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";
-
+  
     const ai_request = (request, respondWith) => {
-        const openAiOptions = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${api_key}`,
-            },
-            body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                temperature: 0.7,
-                max_tokens: 800,
-                messages: [{
-                    role: "user",
-                    content: request.prompt,
-                }, ],
-            }),
-        };
-        respondWith.string((signal) =>
-            window
-            .fetch("https://api.openai.com/v1/chat/completions", {
-                signal,
-                ...openAiOptions,
-            })
-            .then(async (response) => {
-                if (response) {
-                    const data = await response.json();
-                    if (data.error) {
-                        throw new Error(`${data.error.type}: ${data.error.message}`);
-                    } else if (response.ok) {
-                        // Extract the response content from the data returned by the API
-                        return data?.choices[0]?.message?.content?.trim();
-                    }
-                } else {
-                    throw new Error("Failed to communicate with the ChatGPT API");
-                }
-            })
-        );
+      const openAiOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${api_key}`,
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          temperature: 0.7,
+          max_tokens: 800,
+          messages: [{
+            role: "user",
+            content: request.prompt,
+          }],
+        }),
+      };
+      respondWith.string((signal) =>
+        window.fetch("https://api.openai.com/v1/chat/completions", {
+          signal,
+          ...openAiOptions,
+        }).then(async (response) => {
+          if (response) {
+            const data = await response.json();
+            if (data.error) {
+              throw new Error(`${data.error.type}: ${data.error.message}`);
+            } else if (response.ok) {
+              return data?.choices[0]?.message?.content?.trim();
+            }
+          } else {
+            throw new Error("Failed to communicate with the ChatGPT API");
+          }
+        })
+      );
     };
-
-    // Inicializar TinyMCE
+  
+    // Initialize TinyMCE
     tinymce.init({
-        selector: "textarea#descripcioCreate",
-        plugins: "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
-        toolbar: "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | aidialog aishortcuts",
-        ai_request: ai_request, // Asigna la función ai_request como el manejador de las solicitudes al AI
-        tinycomments_mode: "embedded",
-        tinycomments_author: "Author name",
-        mergetags_list: [{
-                value: "First.Name",
-                title: "First Name",
-            },
-            {
-                value: "Email",
-                title: "Email",
-            },
-        ],
+      selector: "textarea#descripcioCreate",
+      plugins: "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
+      toolbar: "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | aidialog aishortcuts",
+      ai_request: ai_request,
+      tinycomments_mode: "embedded",
+      tinycomments_author: "Author name",
+      mergetags_list: [{
+          value: "First.Name",
+          title: "First Name",
+        },
+        {
+          value: "Email",
+          title: "Email",
+        },
+      ],
+      setup: function (editor) {
+        editor.on('init', function () {
+          document.querySelector('form#create-form-article').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const submitButton = this.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+  
+            const titleContent = this.querySelector('input[name="titleCreate"]').value.trim();
+            const contentContent = this.querySelector('input[name="foto_bannerCreate"]').value.trim();
+            const resumContent = this.querySelector('input[name="resumCreate"]').value.trim();
+            const descripcioContent = editor.getContent().trim();
+            const blogIdContent = this.querySelector('select[name="blogIdCreate"]').value.trim();
+  
+            console.log('Title:', titleContent);
+            console.log('Foto Banner:', contentContent);
+            console.log('Resum:', resumContent);
+            console.log('Descripcio:', descripcioContent);
+            console.log('Blog ID:', blogIdContent);
+  
+            if (!titleContent || !contentContent || !resumContent || !descripcioContent || !blogIdContent) {
+              console.error("All fields are required");
+              document.getElementById("error").innerText = "All fields are required";
+              document.getElementById("error").style.display = "block";
+              submitButton.disabled = false;
+              return;
+            }
+  
+            const dataCreate = {
+              title: titleContent,
+              foto_banner: contentContent,
+              resum: resumContent,
+              descripcio: descripcioContent,
+              BlogId: blogIdContent,
+            };
+  
+            try {
+              const response = await fetch(
+                "https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Article", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(dataCreate),
+                }
+              );
+  
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+  
+              const data = await response.json();
+  
+              document.getElementById("success").innerText = "Article created successfully";
+              document.getElementById("success").style.display = "block";
+              document.getElementById("error").style.display = "none";
+              console.log("Success:", data);
+            } catch (error) {
+              document.getElementById("error").innerText = "There was a problem with the request: " + error.message;
+              document.getElementById("error").style.display = "block";
+              console.error("There was a problem with the request:", error);
+            } finally {
+              submitButton.disabled = false;
+            }
+          });
+        });
+      }
     });
-</script>
+  </script>
 
 </html>

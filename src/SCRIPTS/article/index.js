@@ -214,94 +214,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 });
-async function fetchBlogs() {
-  try {
-    const response = await fetch(
-      "https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Blog"
-    );
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const blogs = await response.json();
-
-    // Limpiar el select antes de agregar nuevas opciones
-    const blogSelect = document.getElementById("blog-select");
-    const blogSelect2 = document.getElementById("blog-select2");
-    blogSelect.innerHTML = "";
-    blogSelect2.innerHTML = "";
-
-    // Crear la opción por defecto
-    const defaultOption = document.createElement("option");
-    defaultOption.value = "";
-    defaultOption.text = "Select a Option";
-    defaultOption.selected = true;
-    defaultOption.disabled = true;
-
-    // Agregar la opción por defecto a ambas listas desplegables
-    blogSelect.appendChild(defaultOption.cloneNode(true));
-    blogSelect2.appendChild(defaultOption.cloneNode(true));
-
-    // Crear opciones para cada blog y agregarlas a las listas desplegables
-    blogs.forEach((blog) => {
-      const option = document.createElement("option");
-      option.value = blog.id;
-      option.textContent = blog.title;
-
-      // Agregar las opciones a ambas listas desplegables
-      blogSelect.appendChild(option.cloneNode(true));
-      blogSelect2.appendChild(option.cloneNode(true));
-    });
-
-    // Add event listener after options are populated
-    blogSelect.addEventListener("change", function () {
-      const selectedBlogId = this.value;
-      getInfoBlog(selectedBlogId); // Call the getInfo function with the selected ID
-    });
-  } catch (error) {
-    console.log(
-      "There was a problem with the fetch operation: " + error.message
-    );
-  }
-}
-async function fetcharticles() {
-  try {
-    const response = await fetch(
-      "https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Article"
-    );
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const articles = await response.json();
-
-    // Limpiar el select antes de agregar nuevas opciones
-    const articleSelect = document.getElementById("article-select");
-    articleSelect.innerHTML = "";
-
-    // Crear la opción por defecto
-    const defaultOption = document.createElement("option");
-    defaultOption.value = "";
-    defaultOption.text = "Select a Option";
-    defaultOption.selected = true;
-    defaultOption.disabled = true;
-    articleSelect.appendChild(defaultOption);
-
-    // Crear opciones para cada article y agregarlas al select
-    articles.forEach((article) => {
-      const option = document.createElement("option");
-      option.value = article.id;
-      option.textContent = article.title;
-      articleSelect.appendChild(option);
-    });
-  } catch (error) {
-    console.log(
-      "There was a problem with the fetch operation: " + error.message
-    );
-  }
-}
 async function getInfoarticle(articleId) {
   try {
     const response = await fetch(
@@ -399,30 +311,30 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+  fetchBlogs();
+  fetcharticles();
 
-document
-  .getElementById("create-form-article")
-  .addEventListener("submit", async function (event) {
-    try {
+  document
+    .getElementById("create-form-article")
+    .addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      const form = document.getElementById("create-form-article"); // Define the form variable
+      const form = document.getElementById("create-form-article");
       const submitButton = form.querySelector('button[type="submit"]');
       submitButton.disabled = true;
 
-      const titleContent = form.querySelector(
-        'input[name="titleCreate"]'
-      ).value;
-      const contentContent = form.querySelector(
-        'input[name="foto_bannerCreate"]'
-      ).value;
-      const resumContent = form.querySelector(
-        'input[name="resumCreate"]'
-      ).value;
-      const descripcioContent = tinymce.get("descripcioCreate").getContent();
-      const blogIdContent = form.querySelector(
-        'select[name="blogIdCreate"]'
-      ).value;
+      const titleContent = form.querySelector('input[name="titleCreate"]').value.trim();
+      const contentContent = form.querySelector('input[name="foto_bannerCreate"]').value.trim();
+      const resumContent = form.querySelector('input[name="resumCreate"]').value.trim();
+      const descripcioContent = tinymce.get("descripcioCreate").getContent().trim();
+      const blogIdContent = form.querySelector('select[name="blogIdCreate"]').value.trim();
+
+      console.log('Title:', titleContent);
+      console.log('Foto Banner:', contentContent);
+      console.log('Resum:', resumContent);
+      console.log('Descripcio:', descripcioContent);
+      console.log('Blog ID:', blogIdContent);
 
       if (
         !titleContent ||
@@ -431,7 +343,13 @@ document
         !descripcioContent ||
         !blogIdContent
       ) {
-        console.error("All fields are required");
+        console.log("All fields are required");
+        console.log('Title:', titleContent);
+        console.log('Foto Banner:', contentContent);
+        console.log('Resum:', resumContent);
+        console.log('Descripcio:', descripcioContent);
+        console.log('Blog ID:', blogIdContent);
+
         document.getElementById("error").innerText = "All fields are required";
         document.getElementById("error").style.display = "block";
         submitButton.disabled = false;
@@ -446,36 +364,109 @@ document
         BlogId: blogIdContent,
       };
 
-      const response = await fetch(
-        "https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Article",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(dataCreate),
+      try {
+        const response = await fetch(
+          "https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Article",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dataCreate),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
-      );
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+        const data = await response.json();
+
+        document.getElementById("success").innerText = "Article created successfully";
+        document.getElementById("success").style.display = "block";
+        document.getElementById("error").style.display = "none";
+        console.log("Success:", data);
+      } catch (error) {
+        document.getElementById("error").innerText = "There was a problem with the request: " + error.message;
+        document.getElementById("error").style.display = "block";
+        console.error("There was a problem with the request:", error);
+      } finally {
+        submitButton.disabled = false;
       }
+    });
+});
 
-      const data = await response.json();
 
-      document.getElementById("success").innerText =
-        "Article created successfully";
-      document.getElementById("success").style.display = "block";
-      document.getElementById("error").style.display = "none";
-      console.log("Success:", data);
-    } catch (error) {
-      document.getElementById("error").innerText =
-        "There was a problem with the request: " + error.message;
-      document.getElementById("error").style.display = "block";
-      console.error("There was a problem with the request:", error);
-    } finally {
-      submitButton.disabled = false;
+async function fetchBlogs() {
+  try {
+    const response = await fetch(
+      "https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Blog"
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  });
 
+    const blogs = await response.json();
+
+    // Populate the blog select options
+    const blogSelect = document.getElementById("blog-select2");
+    blogSelect.innerHTML = "";
+
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.text = "Select an Option";
+    defaultOption.selected = true;
+    defaultOption.disabled = true;
+
+    blogSelect.appendChild(defaultOption);
+
+    blogs.forEach((blog) => {
+      const option = document.createElement("option");
+      option.value = blog.id;
+      option.textContent = blog.title;
+      blogSelect.appendChild(option);
+    });
+  } catch (error) {
+    console.log(
+      "There was a problem with the fetch operation: " + error.message
+    );
+  }
+}
+
+async function fetcharticles() {
+  try {
+    const response = await fetch(
+      "https://6644bb32b8925626f88fb22b.mockapi.io/api/v1/Article"
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const articles = await response.json();
+
+    // Populate the article select options
+    const articleSelect = document.getElementById("article-select");
+    articleSelect.innerHTML = "";
+
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.text = "Select an Option";
+    defaultOption.selected = true;
+    defaultOption.disabled = true;
+    articleSelect.appendChild(defaultOption);
+
+    articles.forEach((article) => {
+      const option = document.createElement("option");
+      option.value = article.id;
+      option.textContent = article.title;
+      articleSelect.appendChild(option);
+    });
+  } catch (error) {
+    console.log(
+      "There was a problem with the fetch operation: " + error.message
+    );
+  }
+}
 // fetcharticles();

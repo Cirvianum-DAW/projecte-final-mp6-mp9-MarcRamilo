@@ -180,7 +180,7 @@ async function fetchUsers() {
     users.forEach((user) => {
       const option = document.createElement("option");
       option.value = user.id;
-      option.textContent = user.name; // Aquí se muestra el nombre del usuario
+      option.textContent = user.name + " " + "id:" + user.id; // Aquí se muestra el nombre del usuario
       userSelect.appendChild(option);
     });
   } catch (error) {
