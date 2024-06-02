@@ -1,3 +1,5 @@
+> **NOTA:** No s'ha pogut fer un build a Netlify/Vercel. T'he enviat un correu, Pablo, amb els errors que tinc. La documentació d'accessibilitat i usabilitat es troba a continuació de la introducció en el `README.MD`.
+
 # Instruccions per executar l'aplicació
 
 1. Assegura't que tens Node.js instal·lat al teu sistema. Pots comprovar-ho executant `node -v` al terminal. Si no tens Node.js, pots descarregar-lo i instal·lar-lo des del lloc web oficial de Node.js.
