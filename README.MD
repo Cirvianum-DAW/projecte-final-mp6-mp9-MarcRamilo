@@ -20,4 +20,4 @@ https://drive.google.com/file/d/1Ot5t7ZPMgveB4HL1xQGV6LhWsuDLStE-/view?usp=drive
 Video YouTube
 https://youtu.be/0EnKyyzf_fs
 
-Projecte al Netlify
+
