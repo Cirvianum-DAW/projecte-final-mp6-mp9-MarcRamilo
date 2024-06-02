@@ -17,7 +17,7 @@ Això és tot! Ara hauries de poder executar l'aplicació utilitzant `npm run de
 
 ## DOCUMENTACIÓ
 Informe de Test d'Usabilitat i Accessibilitat _ Marc Ramilo Garrido.pdf
-https://drive.google.com/file/d/1Ot5t7ZPMgveB4HL1xQGV6LhWsuDLStE-/view?usp=drive_link
+https://drive.google.com/file/d/1Ot5t7ZPMgveB4HL1xQGV6LhWsuDLStE-/view?usp=drivesdk
 
 Video YouTube
 https://youtu.be/0EnKyyzf_fs
